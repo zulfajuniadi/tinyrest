@@ -63,7 +63,7 @@ class Router
             usleep(10000);
         }
         touch($this->lock_file);
-        file_put_contents($this->file_name, json_encode($this->data));
+        file_put_contents($this->file_name, json_encode(array_values($this->data)));
         unlink($this->lock_file);
     }
 
@@ -93,7 +93,7 @@ class Router
             $data = $instance->input();
             if(isset($data->id))
                 unset($data->id);
-            $data->id = uniqid(null, true);
+            $data->id = uniqid(null);
             array_push($instance->data, $data);
             $this->fire('create', $data);
             return $instance->app->render(201, [
@@ -129,7 +129,7 @@ class Router
             unset($instance->data[$i]);
             $this->fire('delete', $old_data);
             return $instance->app->render(200, [
-                'data' => $old_data
+                'response' => $old_data
             ]);
         });
     }
@@ -148,7 +148,7 @@ class Router
             throw new DataFileNotReadable;
         }
 
-        $data = json_decode(file_get_contents($this->file_name));
+        $data = json_decode(file_get_contents($this->file_name), FALSE);
         if(json_last_error() !== JSON_ERROR_NONE) {
             throw new CorruptDataFile;    
         }
