@@ -1,0 +1,22 @@
+{
+    "name": "zulfajuniadi/tinyrest",
+    "description": "Single file JSON REST Server",
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Zulfa Juniadi Zulkifli",
+            "email": "zulfajuniadi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "entomb/slim-json-api": "1.1.0",
+        "slim/slim": "2.3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tinyrest\\": "Tinyrest\\src"
+        }
+    }
+}
