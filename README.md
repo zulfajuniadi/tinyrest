@@ -167,7 +167,7 @@ Events fired:
 </thead>
 <tbody>
     <tr>
-        <td>create</td>
+        <td><b>create</b></td>
         <td>
             <ol start="0">
                 <li>$new_data</li>
@@ -176,7 +176,7 @@ Events fired:
         <td>Fired every time a new record is created</td>
     </tr>
     <tr>
-        <td>update</td>
+        <td><b>update</b></td>
         <td>
             <ol start="0">
                 <li>$new_data</li>
@@ -186,13 +186,13 @@ Events fired:
         <td>Fired every time a record is updated</td>
     </tr>
     <tr>
-        <td>delete</td>
+        <td><b>delete</b></td>
         <td>
             <ol start="0">
                 <li>$old_data</li>
             </ol>
         </td>
-        <td>Fired every time a record is updated</td>
+        <td>Fired every time a record is deleted</td>
     </tr>
 </tbody>
 </table>
@@ -200,7 +200,7 @@ Events fired:
 
 ###Data Persistance
 
-It stores each endpoint's data inside it's own .json file in your public directory. To change the directory, provide a second argument to point to your preferred data directory as per example below:
+TinyREST stores each endpoint data inside it's own .json file in the public directory. To change the directory, provide a second argument to point to your preferred data directory as per example below:
 
 ```php
 new Tinyrest\Handle(['projects', 'todos'], '../data/');
