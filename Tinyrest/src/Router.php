@@ -176,9 +176,10 @@ class Router
 
     /**
      * [off description]
-     * @param  Int $index   The callback's index inside the listener array
+     * @param  String $event   The event name
+     * @param  Int    $index   The callback's index inside the listener array
      */
-    public function off($index) 
+    public function off($event, $index) 
     {
         if(!isset($this->listeners[$event])) {
             throw new InvalidEventException;
@@ -186,6 +187,7 @@ class Router
         if(!isset($this->listeners[$event][$index])) {
             throw new CallbackNotFoundException;   
         }
+        unset($this->listeners[$event][$index]);
     }
 
     public function __construct($path, $data_dir, $app)
